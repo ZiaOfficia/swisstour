@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>SwissRail — Book Swiss Rail Tickets, Passes &amp; Scenic Routes</title>
+<meta name="description" content="Book Swiss train tickets, the Swiss Travel Pass, Half Fare Card and scenic routes like the Glacier Express and Bernina Express. Flexible, digital and free of booking fees." />
+<meta name="theme-color" content="#0C1B2A" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="SwissRail — All of Switzerland on one ticket" />
+<meta property="og:description" content="Passes, scenic routes and mountain excursions across Switzerland. Digital tickets, flexible cancellation, no booking fees." />
+<meta property="og:image" content="assets/img/hero-landwasser.jpg" />
+
+<link rel="preload" as="image" href="assets/img/hero-landwasser.jpg" />
+<link rel="stylesheet" href="assets/css/styles.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23E30613'/><rect x='13.5' y='6' width='5' height='20' fill='white'/><rect x='6' y='13.5' width='20' height='5' fill='white'/></svg>" />
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ══════════════════ UTILITY BAR ══════════════════ -->
+<div class="utilbar">
+  <div class="wrap utilbar__in">
+    <p class="utilbar__msg">
+      <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+      Free cancellation on most passes · Instant digital delivery
+    </p>
+    <div class="utilbar__act">
+      <button class="chip" id="curBtn" type="button" aria-label="Currency">USD <svg class="ico ico--xs" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+      <button class="chip" id="langBtn" type="button" aria-label="Language">EN <svg class="ico ico--xs" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+      <button class="chip chip--icon" id="themeBtn" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <svg class="ico ico--sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="ico ico--moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ HEADER ══════════════════ -->
+<header class="hdr" id="hdr">
+  <div class="wrap hdr__in">
+    <a class="brand" href="#top" aria-label="SwissRail home">
+      <span class="brand__mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32"><rect width="32" height="32" rx="8"/><rect x="13.4" y="6" width="5.2" height="20" class="cross"/><rect x="6" y="13.4" width="20" height="5.2" class="cross"/></svg>
+      </span>
+      <span class="brand__txt">Swiss<span>Rail</span></span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Primary">
+      <a href="#passes">Travel Passes</a>
+      <a href="#routes">Scenic Routes</a>
+      <a href="#excursions">Mountain Railways</a>
+      <a href="#why">Why us</a>
+      <a href="#faq">Help</a>
+      <a class="btn btn--sm btn--primary nav__cta" href="#book">Book now</a>
+    </nav>
+
+    <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ══════════════════ HERO ══════════════════ -->
+<section class="hero" id="top">
+  <div class="hero__media">
+    <img src="assets/img/hero-landwasser.jpg" alt="A red Rhaetian Railway train crossing the Landwasser Viaduct in the Swiss Alps" fetchpriority="high" />
+    <div class="hero__scrim"></div>
+  </div>
+
+  <div class="wrap hero__in">
+    <div class="hero__copy">
+      <p class="eyebrow reveal">
+        <span class="dot"></span> Authorised ticket partner · 500+ destinations
+      </p>
+      <h1 class="reveal" style="--d:.06s">
+        All of Switzerland,<br />on <em>one ticket</em>.
+      </h1>
+      <p class="lede reveal" style="--d:.12s">
+        Trains, buses, boats and mountain railways — booked in minutes, delivered
+        instantly to your phone. Flexible dates, transparent pricing, zero booking fees.
+      </p>
+
+      <div class="hero__proof reveal" style="--d:.18s">
+        <div class="stars" aria-label="Rated 4.8 out of 5">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg>
+          <strong>4.8/5</strong>
+        </div>
+        <span class="sep" aria-hidden="true"></span>
+        <p>Trusted by <strong>2.1M+</strong> travellers</p>
+      </div>
+    </div>
+
+    <!-- Trip planner -->
+    <div class="planner reveal" style="--d:.24s">
+      <div class="planner__tabs" role="tablist" aria-label="Trip type">
+        <button class="ptab is-on" role="tab" aria-selected="true"  data-mode="pass">Travel pass</button>
+        <button class="ptab"       role="tab" aria-selected="false" data-mode="p2p">Single journey</button>
+        <button class="ptab"       role="tab" aria-selected="false" data-mode="peak">Mountain trip</button>
+      </div>
+
+      <form class="planner__body" id="planner" novalidate>
+        <!-- Pass mode -->
+        <div class="pfield pmode pmode--pass">
+          <label for="p_pass">Which pass?</label>
+          <div class="ctl">
+            <svg class="ctl__ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/></svg>
+            <select id="p_pass">
+              <option>Swiss Travel Pass</option>
+              <option>Swiss Travel Pass Flex</option>
+              <option>Swiss Half Fare Card</option>
+              <option>Berner Oberland Pass</option>
+              <option>Jungfrau Travel Pass</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Point to point -->
+        <div class="pfield pmode pmode--p2p" hidden>
+          <label for="p_from">From</label>
+          <div class="ctl">
+            <svg class="ctl__ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="10" r="3"/><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z"/></svg>
+            <input id="p_from" list="stations" placeholder="Zurich HB" autocomplete="off" />
+          </div>
+        </div>
+        <div class="pfield pmode pmode--p2p" hidden>
+          <label for="p_to">To</label>
+          <div class="ctl">
+            <svg class="ctl__ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="10" r="3"/><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z"/></svg>
+            <input id="p_to" list="stations" placeholder="Zermatt" autocomplete="off" />
+          </div>
+        </div>
+
+        <!-- Peak -->
+        <div class="pfield pmode pmode--peak" hidden>
+          <label for="p_peak">Summit</label>
+          <div class="ctl">
+            <svg class="ctl__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m3 20 6.5-12 4 7 2.5-4L21 20z"/></svg>
+            <select id="p_peak">
+              <option>Jungfraujoch — Top of Europe</option>
+              <option>Gornergrat</option>
+              <option>Schilthorn — Piz Gloria</option>
+              <option>Mount Pilatus</option>
+              <option>Rigi — Queen of the Mountains</option>
+              <option>Harder Kulm</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="pfield">
+          <label for="p_date">Travel date</label>
+          <div class="ctl">
+            <svg class="ctl__ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+            <input type="date" id="p_date" />
+          </div>
+        </div>
+
+        <div class="pfield">
+          <label for="p_pax">Travellers</label>
+          <div class="ctl">
+            <svg class="ctl__ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.4"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M17 11.2A3 3 0 0 0 17 5m4.5 15a5.4 5.4 0 0 0-4-5.2"/></svg>
+            <select id="p_pax">
+              <option>1 adult</option>
+              <option selected>2 adults</option>
+              <option>2 adults, 1 child</option>
+              <option>2 adults, 2 children</option>
+              <option>Group (5+)</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="btn btn--primary planner__go" type="submit">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          Find tickets
+        </button>
+      </form>
+
+      <p class="planner__note">
+        <svg class="ico ico--xs" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="10" rx="2.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+        Secure checkout · No booking fee · Free cancellation on most passes
+      </p>
+    </div>
+  </div>
+
+  <datalist id="stations">
+    <option value="Zurich HB"></option><option value="Geneva"></option>
+    <option value="Bern"></option><option value="Lucerne"></option>
+    <option value="Interlaken Ost"></option><option value="Zermatt"></option>
+    <option value="St. Moritz"></option><option value="Lugano"></option>
+    <option value="Basel SBB"></option><option value="Montreux"></option>
+    <option value="Chur"></option><option value="Lausanne"></option>
+  </datalist>
+</section>
+
+<!-- ══════════════════ TRUST STRIP ══════════════════ -->
+<section class="trust">
+  <div class="wrap trust__in">
+    <div class="stat reveal"><b data-count="2.1" data-suffix="M+">0</b><span>Tickets issued</span></div>
+    <div class="stat reveal" style="--d:.06s"><b data-count="500" data-suffix="+">0</b><span>Destinations</span></div>
+    <div class="stat reveal" style="--d:.12s"><b data-count="4.8" data-suffix="/5">0</b><span>Traveller rating</span></div>
+    <div class="stat reveal" style="--d:.18s"><b data-count="0" data-suffix="">0</b><span>Booking fees</span></div>
+  </div>
+</section>
+
+<!-- ══════════════════ PASSES ══════════════════ -->
+<section class="sec" id="passes">
+  <div class="wrap">
+    <header class="sec__head reveal">
+      <p class="kicker">Travel passes</p>
+      <h2>Pick the pass, forget the timetable</h2>
+      <p class="sec__sub">Unlimited travel by train, bus and boat — plus free entry to 500 museums.
+        Choose consecutive days, flexible days, or half price on everything.</p>
+    </header>
+
+    <div class="grid grid--3">
+      <article class="pass reveal">
+        <div class="pass__top">
+          <h3>Swiss Travel Pass</h3>
+          <p class="pass__tag">Most popular</p>
+        </div>
+        <p class="pass__desc">Unlimited travel on consecutive days across the entire public network.</p>
+        <ul class="ticks">
+          <li>Trains, buses &amp; boats nationwide</li>
+          <li>Free entry to 500+ museums</li>
+          <li>Up to 50% off mountain railways</li>
+          <li>Kids under 16 travel free</li>
+        </ul>
+        <div class="pass__foot">
+          <p class="price"><small>from</small> <b>$318</b></p>
+          <button class="btn btn--primary btn--full js-pick" data-product="Swiss Travel Pass">Select pass</button>
+        </div>
+      </article>
+
+      <article class="pass pass--hl reveal" style="--d:.08s">
+        <div class="pass__top">
+          <h3>Swiss Travel Pass Flex</h3>
+          <p class="pass__tag pass__tag--hl">Best flexibility</p>
+        </div>
+        <p class="pass__desc">Choose your travel days freely within one month — perfect for slower trips.</p>
+        <ul class="ticks">
+          <li>3–15 freely selectable days</li>
+          <li>Same benefits as the standard pass</li>
+          <li>Half price on non-travel days</li>
+          <li>Change plans without penalty</li>
+        </ul>
+        <div class="pass__foot">
+          <p class="price"><small>from</small> <b>$362</b></p>
+          <button class="btn btn--primary btn--full js-pick" data-product="Swiss Travel Pass Flex">Select pass</button>
+        </div>
+      </article>
+
+      <article class="pass reveal" style="--d:.16s">
+        <div class="pass__top">
+          <h3>Swiss Half Fare Card</h3>
+          <p class="pass__tag">Best value</p>
+        </div>
+        <p class="pass__desc">One month of half-price tickets on virtually the whole network.</p>
+        <ul class="ticks">
+          <li>50% off trains, buses &amp; boats</li>
+          <li>50% off most mountain railways</li>
+          <li>Valid a full month</li>
+          <li>Ideal for longer, slower stays</li>
+        </ul>
+        <div class="pass__foot">
+          <p class="price"><small>from</small> <b>$188</b></p>
+          <button class="btn btn--primary btn--full js-pick" data-product="Swiss Half Fare Card">Select card</button>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ SCENIC ROUTES ══════════════════ -->
+<section class="sec sec--soft" id="routes">
+  <div class="wrap">
+    <header class="sec__head reveal">
+      <p class="kicker">Scenic routes</p>
+      <h2>The journeys people fly in for</h2>
+      <p class="sec__sub">Panoramic carriages, engineered switchbacks and UNESCO track.
+        These are the rides that make the train the destination.</p>
+    </header>
+
+    <div class="grid grid--3 routes">
+      <article class="rcard reveal">
+        <div class="rcard__img">
+          <img src="assets/img/route-glacier.jpg" alt="The Glacier Express panoramic train crossing snow-covered alpine terrain near Andermatt" loading="lazy" />
+          <span class="badge">8 h · Zermatt ⇄ St. Moritz</span>
+        </div>
+        <div class="rcard__body">
+          <h3>Glacier Express</h3>
+          <p>The slowest express train in the world — 291 bridges, 91 tunnels and the
+             Oberalp Pass, all through floor-to-ceiling glass.</p>
+          <div class="rcard__foot">
+            <p class="price"><small>from</small> <b>$179</b></p>
+            <button class="btn btn--ghost js-pick" data-product="Glacier Express">Reserve seat</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="rcard reveal" style="--d:.08s">
+        <div class="rcard__img">
+          <img src="assets/img/route-bernina.jpg" alt="The Bernina Express running beside the turquoise Lago Bianco reservoir" loading="lazy" />
+          <span class="badge">4 h · Chur ⇄ Tirano</span>
+        </div>
+        <div class="rcard__body">
+          <h3>Bernina Express</h3>
+          <p>A UNESCO World Heritage line that climbs from palm trees to glaciers
+             at 2,253 m — without a single rack rail.</p>
+          <div class="rcard__foot">
+            <p class="price"><small>from</small> <b>$72</b></p>
+            <button class="btn btn--ghost js-pick" data-product="Bernina Express">Reserve seat</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="rcard reveal" style="--d:.16s">
+        <div class="rcard__img">
+          <img src="assets/img/route-goldenpass.jpg" alt="A GoldenPass Panoramic train passing green meadows and chalets near Giswil" loading="lazy" />
+          <span class="badge">5 h · Lucerne ⇄ Montreux</span>
+        </div>
+        <div class="rcard__body">
+          <h3>GoldenPass Line</h3>
+          <p>Three lakes, the Brünig Pass and the vineyards of Lavaux — the classic
+             route from Central Switzerland to the Riviera.</p>
+          <div class="rcard__foot">
+            <p class="price"><small>from</small> <b>$68</b></p>
+            <button class="btn btn--ghost js-pick" data-product="GoldenPass Line">Reserve seat</button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ MOUNTAIN EXCURSIONS ══════════════════ -->
+<section class="sec" id="excursions">
+  <div class="wrap">
+    <header class="sec__head sec__head--row reveal">
+      <div>
+        <p class="kicker">Mountain railways</p>
+        <h2>Go up. Everything changes.</h2>
+      </div>
+      <p class="sec__sub">Cogwheel trains, cable cars and funiculars to Switzerland's
+        most famous summits — pass discounts applied automatically.</p>
+    </header>
+
+    <div class="grid grid--3 peaks">
+      <article class="peak reveal">
+        <img src="assets/img/peak-jungfrau.jpg" alt="A Jungfraubahn train crossing green slopes below the Eiger glacier" loading="lazy" />
+        <div class="peak__in">
+          <p class="peak__alt">3,454 m</p>
+          <h3>Jungfraujoch</h3>
+          <p class="peak__d">Top of Europe · Ice Palace</p>
+          <div class="peak__foot"><span class="price"><small>from</small> <b>$150</b></span>
+            <button class="btn btn--tiny js-pick" data-product="Jungfraujoch">Book</button></div>
+        </div>
+      </article>
+
+      <article class="peak reveal" style="--d:.06s">
+        <img src="assets/img/peak-gornergrat.jpg" alt="A red Gornergrat cogwheel train with the Matterhorn behind it" loading="lazy" />
+        <div class="peak__in">
+          <p class="peak__alt">3,089 m</p>
+          <h3>Gornergrat</h3>
+          <p class="peak__d">29 peaks over 4,000 m</p>
+          <div class="peak__foot"><span class="price"><small>from</small> <b>$83</b></span>
+            <button class="btn btn--tiny js-pick" data-product="Gornergrat">Book</button></div>
+        </div>
+      </article>
+
+      <article class="peak reveal" style="--d:.12s">
+        <img src="assets/img/peak-schilthorn.jpg" alt="Panorama of snow-covered Bernese Alps seen from the Schilthorn skyline walk" loading="lazy" />
+        <div class="peak__in">
+          <p class="peak__alt">2,970 m</p>
+          <h3>Schilthorn</h3>
+          <p class="peak__d">Piz Gloria · Skyline Walk</p>
+          <div class="peak__foot"><span class="price"><small>from</small> <b>$58</b></span>
+            <button class="btn btn--tiny js-pick" data-product="Schilthorn">Book</button></div>
+        </div>
+      </article>
+
+      <article class="peak reveal" style="--d:.06s">
+        <img src="assets/img/peak-pilatus.jpg" alt="The red Pilatus cogwheel railway climbing a steep rocky mountainside" loading="lazy" />
+        <div class="peak__in">
+          <p class="peak__alt">2,132 m</p>
+          <h3>Mount Pilatus</h3>
+          <p class="peak__d">World's steepest cogwheel railway</p>
+          <div class="peak__foot"><span class="price"><small>from</small> <b>$53</b></span>
+            <button class="btn btn--tiny js-pick" data-product="Mount Pilatus">Book</button></div>
+        </div>
+      </article>
+
+      <article class="peak reveal" style="--d:.12s">
+        <img src="assets/img/peak-rigi.jpg" alt="A blue Rigi cogwheel train in deep snow above Lake Lucerne" loading="lazy" />
+        <div class="peak__in">
+          <p class="peak__alt">1,798 m</p>
+          <h3>Rigi</h3>
+          <p class="peak__d">Queen of the Mountains</p>
+          <div class="peak__foot"><span class="price"><small>from</small> <b>$49</b></span>
+            <button class="btn btn--tiny js-pick" data-product="Rigi">Book</button></div>
+        </div>
+      </article>
+
+      <article class="peak reveal" style="--d:.18s">
+        <img src="assets/img/peak-harder.jpg" alt="View over Interlaken and turquoise Lake Brienz from Harder Kulm" loading="lazy" />
+        <div class="peak__in">
+          <p class="peak__alt">1,322 m</p>
+          <h3>Harder Kulm</h3>
+          <p class="peak__d">Two lakes above Interlaken</p>
+          <div class="peak__foot"><span class="price"><small>from</small> <b>$28</b></span>
+            <button class="btn btn--tiny js-pick" data-product="Harder Kulm">Book</button></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ WHY US ══════════════════ -->
+<section class="sec sec--soft" id="why">
+  <div class="wrap why__grid">
+    <div class="why__media reveal">
+      <img src="assets/img/sbb-intercity.jpg" alt="A Swiss InterCity tilting train running along the shore of Lake Biel" loading="lazy" />
+      <div class="why__float">
+        <p class="why__float-n">0%</p>
+        <p class="why__float-l">booking fee — the price you see is the price you pay</p>
+      </div>
+    </div>
+
+    <div class="why__copy">
+      <header class="sec__head sec__head--left reveal">
+        <p class="kicker">Why book with us</p>
+        <h2>Swiss precision, minus the paperwork</h2>
+      </header>
+
+      <ul class="feats">
+        <li class="reveal">
+          <span class="feat__ico"><svg viewBox="0 0 24 24"><path d="M12 2 4 6v6c0 5 3.4 8.9 8 10 4.6-1.1 8-5 8-10V6Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+          <div><h3>Authorised ticket partner</h3><p>Genuine tickets and passes, issued on the official Swiss system.</p></div>
+        </li>
+        <li class="reveal" style="--d:.06s">
+          <span class="feat__ico"><svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg></span>
+          <div><h3>Instant digital delivery</h3><p>Tickets land in your inbox within seconds. No queues, no collection.</p></div>
+        </li>
+        <li class="reveal" style="--d:.12s">
+          <span class="feat__ico"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg></span>
+          <div><h3>Flexible &amp; refundable</h3><p>Free cancellation on most passes right up to the first day of travel.</p></div>
+        </li>
+        <li class="reveal" style="--d:.18s">
+          <span class="feat__ico"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg></span>
+          <div><h3>Real people, real answers</h3><p>Rail specialists on hand 7 days a week — by chat, mail or phone.</p></div>
+        </li>
+        <li class="reveal" style="--d:.24s">
+          <span class="feat__ico"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/></svg></span>
+          <div><h3>Everything on one platform</h3><p>Passes, seat reservations and summits in a single basket.</p></div>
+        </li>
+        <li class="reveal" style="--d:.3s">
+          <span class="feat__ico"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="2.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></span>
+          <div><h3>Transparent &amp; secure</h3><p>Encrypted payment, clear pricing, and never a surprise surcharge.</p></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ HOW IT WORKS ══════════════════ -->
+<section class="sec" id="how">
+  <div class="wrap">
+    <header class="sec__head reveal">
+      <p class="kicker">How it works</p>
+      <h2>Three steps to the platform edge</h2>
+    </header>
+    <ol class="steps">
+      <li class="reveal"><span class="steps__n">01</span><h3>Tell us your trip</h3>
+        <p>Share your dates, route and party size. Takes about a minute.</p></li>
+      <li class="reveal" style="--d:.08s"><span class="steps__n">02</span><h3>Get a tailored plan</h3>
+        <p>A rail specialist confirms the best-value combination of passes and reservations.</p></li>
+      <li class="reveal" style="--d:.16s"><span class="steps__n">03</span><h3>Travel on your phone</h3>
+        <p>Pay securely and your tickets arrive instantly — ready to scan.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ══════════════════ REVIEWS ══════════════════ -->
+<section class="sec sec--soft" id="reviews">
+  <div class="wrap">
+    <header class="sec__head reveal">
+      <p class="kicker">Traveller stories</p>
+      <h2>4.8 out of 5, across 12,400 reviews</h2>
+    </header>
+    <div class="grid grid--3">
+      <figure class="quote reveal">
+        <div class="stars stars--sm" aria-label="5 out of 5"><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg></div>
+        <blockquote>“I'd been dreading working out passes versus point-to-point. They came back
+          with a plan in three hours and saved us about $200.”</blockquote>
+        <figcaption><b>Marta R.</b><span>Glacier Express · March</span></figcaption>
+      </figure>
+      <figure class="quote reveal" style="--d:.08s">
+        <div class="stars stars--sm" aria-label="5 out of 5"><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg></div>
+        <blockquote>“Tickets were in my inbox before I'd closed the tab. Scanned straight from
+          the phone at Zurich HB — completely painless.”</blockquote>
+        <figcaption><b>Daniel K.</b><span>Swiss Travel Pass · June</span></figcaption>
+      </figure>
+      <figure class="quote reveal" style="--d:.16s">
+        <div class="stars stars--sm" aria-label="5 out of 5"><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg></div>
+        <blockquote>“We changed our dates twice. No fee, no fuss, and someone actually replied
+          on a Sunday. That's rare.”</blockquote>
+        <figcaption><b>Priya S.</b><span>Bernina Express · September</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ BOOKING FORM ══════════════════ -->
+<section class="sec book" id="book">
+  <div class="wrap book__grid">
+
+    <aside class="book__aside">
+      <div class="book__asidein reveal">
+        <p class="kicker kicker--on-dark">Start your journey</p>
+        <h2>Tell us your trip.<br />We'll do the timetable maths.</h2>
+        <p class="book__lede">Send your details and a Swiss rail specialist replies within
+          one working day with a tailored, best-value plan. No obligation, no fee.</p>
+
+        <ul class="assure">
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Reply within 1 working day</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Best-price combination guaranteed</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Your data is never sold or shared</li>
+        </ul>
+
+        <figure class="book__img">
+          <img src="assets/img/city-zermatt.jpg" alt="The Matterhorn rising above the snow-covered village of Zermatt" loading="lazy" />
+        </figure>
+      </div>
+    </aside>
+
+    <div class="book__formwrap reveal">
+      <form class="bform" id="bookingForm" novalidate>
+        <h3 class="bform__h">Request your trip plan</h3>
+
+        <div class="row">
+          <div class="fld">
+            <label for="fullName">Full name <i>*</i></label>
+            <input type="text" id="fullName" name="fullName" placeholder="Anna Meier" autocomplete="name" required />
+            <p class="err" data-for="fullName"></p>
+          </div>
+          <div class="fld">
+            <label for="email">Email <i>*</i></label>
+            <input type="email" id="email" name="email" placeholder="anna@example.com" autocomplete="email" required />
+            <p class="err" data-for="email"></p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="fld">
+            <label for="phone">Phone / WhatsApp</label>
+            <input type="tel" id="phone" name="phone" placeholder="+41 79 000 00 00" autocomplete="tel" />
+            <p class="err" data-for="phone"></p>
+          </div>
+          <div class="fld">
+            <label for="country">Country of residence</label>
+            <input type="text" id="country" name="country" placeholder="India" autocomplete="country-name" />
+          </div>
+        </div>
+
+        <div class="fld">
+          <label for="product">What are you interested in? <i>*</i></label>
+          <select id="product" name="product" required>
+            <option value="">Please choose…</option>
+            <optgroup label="Travel passes">
+              <option>Swiss Travel Pass</option>
+              <option>Swiss Travel Pass Flex</option>
+              <option>Swiss Half Fare Card</option>
+              <option>Berner Oberland Pass</option>
+              <option>Jungfrau Travel Pass</option>
+              <option>Lucerne Travel Pass</option>
+            </optgroup>
+            <optgroup label="Scenic routes">
+              <option>Glacier Express</option>
+              <option>Bernina Express</option>
+              <option>GoldenPass Line</option>
+            </optgroup>
+            <optgroup label="Mountain railways">
+              <option>Jungfraujoch</option>
+              <option>Gornergrat</option>
+              <option>Schilthorn</option>
+              <option>Mount Pilatus</option>
+              <option>Rigi</option>
+              <option>Harder Kulm</option>
+            </optgroup>
+            <optgroup label="Other">
+              <option>Point-to-point tickets</option>
+              <option>Not sure yet — please advise</option>
+            </optgroup>
+          </select>
+          <p class="err" data-for="product"></p>
+        </div>
+
+        <div class="row">
+          <div class="fld">
+            <label for="fromStation">Starting from</label>
+            <input type="text" id="fromStation" name="fromStation" list="stations" placeholder="Zurich HB" autocomplete="off" />
+          </div>
+          <div class="fld">
+            <label for="toStation">Going to</label>
+            <input type="text" id="toStation" name="toStation" list="stations" placeholder="Zermatt" autocomplete="off" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="fld">
+            <label for="travelDate">Travel date <i>*</i></label>
+            <input type="date" id="travelDate" name="travelDate" required />
+            <p class="err" data-for="travelDate"></p>
+          </div>
+          <div class="fld">
+            <label for="returnDate">Return date</label>
+            <input type="date" id="returnDate" name="returnDate" />
+            <p class="err" data-for="returnDate"></p>
+          </div>
+        </div>
+
+        <div class="row row--3">
+          <div class="fld">
+            <label for="adults">Adults</label>
+            <select id="adults" name="adults">
+              <option>1</option><option selected>2</option><option>3</option>
+              <option>4</option><option>5</option><option>6+</option>
+            </select>
+          </div>
+          <div class="fld">
+            <label for="children">Children (&lt;16)</label>
+            <select id="children" name="children">
+              <option selected>0</option><option>1</option><option>2</option>
+              <option>3</option><option>4+</option>
+            </select>
+          </div>
+          <div class="fld">
+            <label for="travelClass">Class</label>
+            <select id="travelClass" name="travelClass">
+              <option>2nd class</option><option>1st class</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="fld">
+          <label for="message">Anything else we should know?</label>
+          <textarea id="message" name="message" rows="4" placeholder="Rough itinerary, mobility needs, luggage, budget…"></textarea>
+        </div>
+
+        <label class="check">
+          <input type="checkbox" id="consent" name="consent" required />
+          <span class="check__box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>
+          <span class="check__txt">I agree to be contacted about this enquiry and accept the
+            <a href="#privacy">privacy policy</a>. <i>*</i></span>
+        </label>
+        <p class="err" data-for="consent"></p>
+
+        <!-- honeypot -->
+        <div class="hp" aria-hidden="true">
+          <label for="company">Company</label>
+          <input type="text" id="company" name="company" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <button class="btn btn--primary btn--full btn--lg" type="submit" id="submitBtn">
+          <span class="btn__label">Send my request</span>
+          <span class="btn__spin" aria-hidden="true"></span>
+        </button>
+
+        <p class="bform__fine">
+          <svg class="ico ico--xs" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="10" rx="2.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+          Encrypted in transit · We never sell your data
+        </p>
+
+        <div class="formmsg" id="formMsg" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ FAQ ══════════════════ -->
+<section class="sec sec--soft" id="faq">
+  <div class="wrap faq__wrap">
+    <header class="sec__head sec__head--left reveal">
+      <p class="kicker">Good to know</p>
+      <h2>Questions, answered</h2>
+    </header>
+
+    <div class="faq">
+      <details class="reveal"><summary>Which pass is right for me?<span class="faq__i" aria-hidden="true"></span></summary>
+        <p>As a rule of thumb: three or more travel days in a week usually favours the
+           Swiss Travel Pass. Longer, slower trips with rest days favour the Half Fare Card
+           or the Flex pass. Send us your rough itinerary and we'll compare all three for you.</p></details>
+
+      <details class="reveal" style="--d:.05s"><summary>Do I need a seat reservation?<span class="faq__i" aria-hidden="true"></span></summary>
+        <p>Not on regular trains — turn up and travel. Panoramic services such as the
+           Glacier Express, Bernina Express and GoldenPass Panoramic do require a reservation,
+           and they sell out in high season, so book early.</p></details>
+
+      <details class="reveal" style="--d:.1s"><summary>How and when do I get my tickets?<span class="faq__i" aria-hidden="true"></span></summary>
+        <p>Everything is digital. Once payment is confirmed, your tickets and passes arrive
+           by email — usually within seconds — as a PDF with a scannable code. Show it on your
+           phone; no printing or collection needed.</p></details>
+
+      <details class="reveal" style="--d:.15s"><summary>Can I cancel or change my booking?<span class="faq__i" aria-hidden="true"></span></summary>
+        <p>Most passes can be cancelled free of charge up to the day before the first day of
+           validity. Seat reservations on panoramic trains follow the operator's own rules.
+           The exact terms are always shown before you pay.</p></details>
+
+      <details class="reveal" style="--d:.2s"><summary>Do children travel free?<span class="faq__i" aria-hidden="true"></span></summary>
+        <p>Children under 6 always travel free. Children aged 6–15 travel free when accompanied
+           by a parent holding a Swiss Family Card, which we issue at no cost with your booking.</p></details>
+
+      <details class="reveal" style="--d:.25s"><summary>Are there any booking fees?<span class="faq__i" aria-hidden="true"></span></summary>
+        <p>None. The price you see is the price you pay — no service charge, no card fee,
+           no currency mark-up at checkout.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ CTA BAND ══════════════════ -->
+<section class="cta">
+  <div class="cta__bg"><img src="assets/img/city-lucerne.jpg" alt="" aria-hidden="true" loading="lazy" /></div>
+  <div class="wrap cta__in reveal">
+    <h2>Switzerland is small. The views aren't.</h2>
+    <p>Get a tailored rail plan from a specialist — free, and with no obligation.</p>
+    <a class="btn btn--primary btn--lg" href="#book">Plan my trip</a>
+  </div>
+</section>
+
+</main>
+
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<footer class="ftr">
+  <div class="wrap ftr__in">
+    <div class="ftr__brand">
+      <a class="brand brand--ftr" href="#top">
+        <span class="brand__mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32"><rect width="32" height="32" rx="8"/><rect x="13.4" y="6" width="5.2" height="20" class="cross"/><rect x="6" y="13.4" width="20" height="5.2" class="cross"/></svg>
+        </span>
+        <span class="brand__txt">Swiss<span>Rail</span></span>
+      </a>
+      <p class="ftr__blurb">Tickets, passes and scenic journeys across Switzerland —
+        booked simply, delivered instantly.</p>
+      <div class="social">
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8h3V5h-3a4 4 0 0 0-4 4v2H8v3h2v7h3v-7h3l1-3h-4V9a1 1 0 0 1 1-1Z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M7.5 10v7M7.5 7.2v.1M12 17v-4a2 2 0 0 1 4 0v4"/></svg></a>
+      </div>
+    </div>
+
+    <nav class="ftr__col" aria-label="Products">
+      <h4>Book</h4>
+      <a href="#passes">Swiss Travel Pass</a>
+      <a href="#passes">Half Fare Card</a>
+      <a href="#routes">Scenic routes</a>
+      <a href="#excursions">Mountain railways</a>
+      <a href="#book">Group travel</a>
+    </nav>
+
+    <nav class="ftr__col" aria-label="Help">
+      <h4>Service</h4>
+      <a href="#faq">FAQ</a>
+      <a href="#faq">Cancellation policy</a>
+      <a href="#book">Contact us</a>
+      <a href="#reviews">Reviews</a>
+    </nav>
+
+    <div class="ftr__col">
+      <h4>Talk to us</h4>
+      <a href="mailto:hello@example.com">hello@example.com</a>
+      <a href="tel:+410000000">+41 00 000 00 00</a>
+      <p class="ftr__hours">Mon–Sun · 08:00–20:00 CET</p>
+      <div class="pay" aria-label="Accepted payment methods">
+        <span>VISA</span><span>Mastercard</span><span>Apple&nbsp;Pay</span><span>G&nbsp;Pay</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap ftr__base">
+    <p>© <span id="yr">2026</span> SwissRail. Demonstration landing page.</p>
+    <nav aria-label="Legal">
+      <a href="#privacy" id="privacy">Privacy</a><a href="#terms">Terms</a><a href="#legal">Legal notice</a>
+    </nav>
+  </div>
+</footer>
+
+<!-- sticky mobile CTA -->
+<div class="mcta" id="mcta">
+  <div>
+    <p class="mcta__l">Tailored rail plan</p>
+    <p class="mcta__s">Free · reply in 1 day</p>
+  </div>
+  <a class="btn btn--primary btn--sm" href="#book">Plan my trip</a>
+</div>
+
+<button class="totop" id="totop" type="button" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 14 6-6 6 6"/></svg>
+</button>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
