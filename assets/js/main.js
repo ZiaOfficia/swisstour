@@ -177,43 +177,11 @@ const isoToday = () => new Date().toISOString().slice(0, 10);
   const planner = $("#planner");
   if (!planner) return;
 
-  const tabs = $$(".ptab");
-  let mode = "pass";
-
-  const paint = () => {
-    $$(".pmode").forEach(el => {
-      el.hidden = !el.classList.contains(`pmode--${mode}`);
-    });
-  };
-
-  tabs.forEach(tab => {
-    tab.addEventListener("click", () => {
-      tabs.forEach(t => {
-        t.classList.remove("is-on");
-        t.setAttribute("aria-selected", "false");
-      });
-      tab.classList.add("is-on");
-      tab.setAttribute("aria-selected", "true");
-      mode = tab.dataset.mode;
-      paint();
-    });
-  });
-  paint();
-
   planner.addEventListener("submit", e => {
     e.preventDefault();
 
     // carry the hero selection into the booking form
-    if (mode === "pass") {
-      setProduct($("#p_pass").value);
-    } else if (mode === "peak") {
-      // strip any descriptive suffix, e.g. "Jungfraujoch — Top of Europe"
-      setProduct($("#p_peak").value.split("—")[0].trim());
-    } else {
-      setProduct("Point-to-point tickets");
-      $("#fromStation").value = $("#p_from").value;
-      $("#toStation").value   = $("#p_to").value;
-    }
+    setProduct($("#p_ticket").value);
 
     if ($("#p_date").value) $("#travelDate").value = $("#p_date").value;
 
@@ -245,9 +213,12 @@ function setSelect(sel, value) {
 function setProduct(name) {
   const sel = $("#product");
   if (!sel || !name) return;
-  const opt = [...sel.options].find(
-    o => o.text.trim().toLowerCase() === name.trim().toLowerCase()
-  );
+  const norm = s => s.toLowerCase().replace(/\b(ticket|mount|mt\.?)\b/g, "")
+                     .replace(/[^a-z0-9]+/g, " ").trim();
+  const want = norm(name);
+  const opts = [...sel.options];
+  const opt = opts.find(o => o.text.trim().toLowerCase() === name.trim().toLowerCase())
+           || opts.find(o => norm(o.text) === want);
   if (opt) sel.value = opt.value;
 }
 
@@ -370,8 +341,6 @@ function goToForm() {
       phone:       $("#phone").value.trim(),
       country:     $("#country").value.trim(),
       product:     $("#product").value,
-      fromStation: $("#fromStation").value.trim(),
-      toStation:   $("#toStation").value.trim(),
       travelDate:  $("#travelDate").value,
       returnDate:  $("#returnDate").value,
       adults:      $("#adults").value,

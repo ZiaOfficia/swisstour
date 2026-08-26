@@ -75,7 +75,7 @@
   <div class="wrap hero__in">
     <div class="hero__copy">
       <p class="eyebrow reveal">
-        <span class="dot"></span> Authorised ticket partner · 500+ destinations
+        <span class="dot"></span> Authorised ticket partner · 25% off every ticket
       </p>
       <h1 class="reveal" style="--d:.06s">
         All of Switzerland,<br />on <em>one ticket</em>.
@@ -91,62 +91,50 @@
           <strong>4.8/5</strong>
         </div>
         <span class="sep" aria-hidden="true"></span>
-        <p>Trusted by <strong>2.1M+</strong> travellers</p>
+        <p>Trusted by <strong>50k+</strong> travellers</p>
       </div>
     </div>
 
     <!-- Trip planner -->
     <div class="planner reveal" style="--d:.24s">
-      <div class="planner__tabs" role="tablist" aria-label="Trip type">
-        <button class="ptab is-on" role="tab" aria-selected="true"  data-mode="pass">Travel pass</button>
-        <button class="ptab"       role="tab" aria-selected="false" data-mode="p2p">Single journey</button>
-        <button class="ptab"       role="tab" aria-selected="false" data-mode="peak">Mountain trip</button>
+      <div class="planner__head">
+        <p class="planner__title">Book your Swiss tickets</p>
+        <p class="planner__sub">Travel passes &amp; mountain excursions — instant e-tickets</p>
       </div>
 
+      <p class="promo promo--planner">
+        <span class="promo__badge">25% OFF</span>
+        <span><b>25% off every ticket &amp; pass.</b> Already applied to every price on this page.</span>
+      </p>
+
       <form class="planner__body" id="planner" novalidate>
-        <!-- Pass mode -->
-        <div class="pfield pmode pmode--pass">
-          <label for="p_pass">Which pass?</label>
+        <!-- Product -->
+        <div class="pfield pfield--wide">
+          <label for="p_ticket">What would you like to book?</label>
           <div class="ctl">
             <svg class="ctl__ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/></svg>
-            <select id="p_pass">
-              <option>Swiss Travel Pass</option>
-              <option>Swiss Travel Pass Flex</option>
-              <option>Swiss Half Fare Card</option>
-              <option>Berner Oberland Pass</option>
-              <option>Jungfrau Travel Pass</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- Point to point -->
-        <div class="pfield pmode pmode--p2p" hidden>
-          <label for="p_from">From</label>
-          <div class="ctl">
-            <svg class="ctl__ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="10" r="3"/><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z"/></svg>
-            <input id="p_from" list="stations" placeholder="Zurich HB" autocomplete="off" />
-          </div>
-        </div>
-        <div class="pfield pmode pmode--p2p" hidden>
-          <label for="p_to">To</label>
-          <div class="ctl">
-            <svg class="ctl__ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="10" r="3"/><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z"/></svg>
-            <input id="p_to" list="stations" placeholder="Zermatt" autocomplete="off" />
-          </div>
-        </div>
-
-        <!-- Peak -->
-        <div class="pfield pmode pmode--peak" hidden>
-          <label for="p_peak">Summit</label>
-          <div class="ctl">
-            <svg class="ctl__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m3 20 6.5-12 4 7 2.5-4L21 20z"/></svg>
-            <select id="p_peak">
-              <option>Jungfraujoch — Top of Europe</option>
-              <option>Gornergrat</option>
-              <option>Schilthorn — Piz Gloria</option>
-              <option>Mount Pilatus</option>
-              <option>Rigi — Queen of the Mountains</option>
-              <option>Harder Kulm</option>
+            <select id="p_ticket">
+              <optgroup label="Travel passes">
+                <option>Swiss Travel Pass</option>
+                <option>Swiss Travel Pass Flex</option>
+                <option>Swiss Half Fare Card</option>
+              </optgroup>
+              <optgroup label="Mountain excursion tickets">
+                <option>Schilthorn Ticket</option>
+                <option>Titlis Ticket</option>
+                <option>Jungfraujoch Ticket</option>
+                <option>Glacier 3000 Ticket</option>
+                <option>Stanserhorn Cabrio Ticket</option>
+                <option>Gornergrat Ticket</option>
+                <option>Matterhorn Glacier Paradise Ticket</option>
+                <option>Pilatus Ticket</option>
+                <option>Rochers de Naye Ticket</option>
+                <option>Rigi Ticket</option>
+                <option>Grindelwald-First Ticket</option>
+                <option>Brienzer Rothorn Ticket</option>
+                <option>Schynige Platte Ticket</option>
+                <option>Harder Kulm Ticket</option>
+              </optgroup>
             </select>
           </div>
         </div>
@@ -185,24 +173,18 @@
       </p>
     </div>
   </div>
-
-  <datalist id="stations">
-    <option value="Zurich HB"></option><option value="Geneva"></option>
-    <option value="Bern"></option><option value="Lucerne"></option>
-    <option value="Interlaken Ost"></option><option value="Zermatt"></option>
-    <option value="St. Moritz"></option><option value="Lugano"></option>
-    <option value="Basel SBB"></option><option value="Montreux"></option>
-    <option value="Chur"></option><option value="Lausanne"></option>
-  </datalist>
 </section>
 
 <!-- ══════════════════ TRUST STRIP ══════════════════ -->
 <section class="trust">
-  <div class="wrap trust__in">
-    <div class="stat reveal"><b data-count="2.1" data-suffix="M+">0</b><span>Tickets issued</span></div>
-    <div class="stat reveal" style="--d:.06s"><b data-count="500" data-suffix="+">0</b><span>Destinations</span></div>
-    <div class="stat reveal" style="--d:.12s"><b data-count="4.8" data-suffix="/5">0</b><span>Traveller rating</span></div>
-    <div class="stat reveal" style="--d:.18s"><b data-count="0" data-suffix="">0</b><span>Booking fees</span></div>
+  <div class="wrap trust__wrap">
+    <p class="trust__kicker reveal">This season &middot; 2026</p>
+    <div class="trust__in">
+      <div class="stat reveal"><b data-count="50" data-suffix="k+">0</b><span>Tickets issued</span></div>
+      <div class="stat reveal" style="--d:.06s"><b data-count="30" data-suffix="+">0</b><span>Destinations</span></div>
+      <div class="stat reveal" style="--d:.12s"><b data-count="50" data-suffix="k+">0</b><span>Travellers trust us</span></div>
+      <div class="stat reveal" style="--d:.18s"><b data-count="0" data-suffix="">0</b><span>Booking fees</span></div>
+    </div>
   </div>
 </section>
 
@@ -230,7 +212,7 @@
           <li>Kids under 16 travel free</li>
         </ul>
         <div class="pass__foot">
-          <p class="price"><small>from</small> <b>$318</b></p>
+          <p class="price"><small>from</small> <s class="price__was">$318</s> <b>$238</b> <span class="price__off">&minus;25%</span></p>
           <button class="btn btn--primary btn--full js-pick" data-product="Swiss Travel Pass">Select pass</button>
         </div>
       </article>
@@ -248,7 +230,7 @@
           <li>Change plans without penalty</li>
         </ul>
         <div class="pass__foot">
-          <p class="price"><small>from</small> <b>$362</b></p>
+          <p class="price"><small>from</small> <s class="price__was">$362</s> <b>$271</b> <span class="price__off">&minus;25%</span></p>
           <button class="btn btn--primary btn--full js-pick" data-product="Swiss Travel Pass Flex">Select pass</button>
         </div>
       </article>
@@ -266,7 +248,7 @@
           <li>Ideal for longer, slower stays</li>
         </ul>
         <div class="pass__foot">
-          <p class="price"><small>from</small> <b>$188</b></p>
+          <p class="price"><small>from</small> <s class="price__was">$188</s> <b>$141</b> <span class="price__off">&minus;25%</span></p>
           <button class="btn btn--primary btn--full js-pick" data-product="Swiss Half Fare Card">Select card</button>
         </div>
       </article>
@@ -295,7 +277,7 @@
           <p>The slowest express train in the world — 291 bridges, 91 tunnels and the
              Oberalp Pass, all through floor-to-ceiling glass.</p>
           <div class="rcard__foot">
-            <p class="price"><small>from</small> <b>$179</b></p>
+            <p class="price"><small>from</small> <s class="price__was">$179</s> <b>$134</b> <span class="price__off">&minus;25%</span></p>
             <button class="btn btn--ghost js-pick" data-product="Glacier Express">Reserve seat</button>
           </div>
         </div>
@@ -311,7 +293,7 @@
           <p>A UNESCO World Heritage line that climbs from palm trees to glaciers
              at 2,253 m — without a single rack rail.</p>
           <div class="rcard__foot">
-            <p class="price"><small>from</small> <b>$72</b></p>
+            <p class="price"><small>from</small> <s class="price__was">$72</s> <b>$54</b> <span class="price__off">&minus;25%</span></p>
             <button class="btn btn--ghost js-pick" data-product="Bernina Express">Reserve seat</button>
           </div>
         </div>
@@ -327,7 +309,7 @@
           <p>Three lakes, the Brünig Pass and the vineyards of Lavaux — the classic
              route from Central Switzerland to the Riviera.</p>
           <div class="rcard__foot">
-            <p class="price"><small>from</small> <b>$68</b></p>
+            <p class="price"><small>from</small> <s class="price__was">$68</s> <b>$51</b> <span class="price__off">&minus;25%</span></p>
             <button class="btn btn--ghost js-pick" data-product="GoldenPass Line">Reserve seat</button>
           </div>
         </div>
@@ -355,8 +337,8 @@
           <p class="peak__alt">3,454 m</p>
           <h3>Jungfraujoch</h3>
           <p class="peak__d">Top of Europe · Ice Palace</p>
-          <div class="peak__foot"><span class="price"><small>from</small> <b>$150</b></span>
-            <button class="btn btn--tiny js-pick" data-product="Jungfraujoch">Book</button></div>
+          <div class="peak__foot"><span class="price"><small>from</small> <s class="price__was">$150</s> <b>$112</b></span>
+            <button class="btn btn--tiny js-pick" data-product="Jungfraujoch Ticket">Book</button></div>
         </div>
       </article>
 
@@ -366,8 +348,8 @@
           <p class="peak__alt">3,089 m</p>
           <h3>Gornergrat</h3>
           <p class="peak__d">29 peaks over 4,000 m</p>
-          <div class="peak__foot"><span class="price"><small>from</small> <b>$83</b></span>
-            <button class="btn btn--tiny js-pick" data-product="Gornergrat">Book</button></div>
+          <div class="peak__foot"><span class="price"><small>from</small> <s class="price__was">$83</s> <b>$62</b></span>
+            <button class="btn btn--tiny js-pick" data-product="Gornergrat Ticket">Book</button></div>
         </div>
       </article>
 
@@ -377,8 +359,8 @@
           <p class="peak__alt">2,970 m</p>
           <h3>Schilthorn</h3>
           <p class="peak__d">Piz Gloria · Skyline Walk</p>
-          <div class="peak__foot"><span class="price"><small>from</small> <b>$58</b></span>
-            <button class="btn btn--tiny js-pick" data-product="Schilthorn">Book</button></div>
+          <div class="peak__foot"><span class="price"><small>from</small> <s class="price__was">$58</s> <b>$43</b></span>
+            <button class="btn btn--tiny js-pick" data-product="Schilthorn Ticket">Book</button></div>
         </div>
       </article>
 
@@ -388,8 +370,8 @@
           <p class="peak__alt">2,132 m</p>
           <h3>Mount Pilatus</h3>
           <p class="peak__d">World's steepest cogwheel railway</p>
-          <div class="peak__foot"><span class="price"><small>from</small> <b>$53</b></span>
-            <button class="btn btn--tiny js-pick" data-product="Mount Pilatus">Book</button></div>
+          <div class="peak__foot"><span class="price"><small>from</small> <s class="price__was">$53</s> <b>$39</b></span>
+            <button class="btn btn--tiny js-pick" data-product="Pilatus Ticket">Book</button></div>
         </div>
       </article>
 
@@ -399,8 +381,8 @@
           <p class="peak__alt">1,798 m</p>
           <h3>Rigi</h3>
           <p class="peak__d">Queen of the Mountains</p>
-          <div class="peak__foot"><span class="price"><small>from</small> <b>$49</b></span>
-            <button class="btn btn--tiny js-pick" data-product="Rigi">Book</button></div>
+          <div class="peak__foot"><span class="price"><small>from</small> <s class="price__was">$49</s> <b>$36</b></span>
+            <button class="btn btn--tiny js-pick" data-product="Rigi Ticket">Book</button></div>
         </div>
       </article>
 
@@ -410,8 +392,8 @@
           <p class="peak__alt">1,322 m</p>
           <h3>Harder Kulm</h3>
           <p class="peak__d">Two lakes above Interlaken</p>
-          <div class="peak__foot"><span class="price"><small>from</small> <b>$28</b></span>
-            <button class="btn btn--tiny js-pick" data-product="Harder Kulm">Book</button></div>
+          <div class="peak__foot"><span class="price"><small>from</small> <s class="price__was">$28</s> <b>$21</b></span>
+            <button class="btn btn--tiny js-pick" data-product="Harder Kulm Ticket">Book</button></div>
         </div>
       </article>
     </div>
@@ -424,8 +406,8 @@
     <div class="why__media reveal">
       <img src="assets/img/sbb-intercity.jpg" alt="A Swiss InterCity tilting train running along the shore of Lake Biel" loading="lazy" />
       <div class="why__float">
-        <p class="why__float-n">0%</p>
-        <p class="why__float-l">booking fee — the price you see is the price you pay</p>
+        <p class="why__float-n">25% off</p>
+        <p class="why__float-l">on every pass and mountain ticket — and still a 0% booking fee</p>
       </div>
     </div>
 
@@ -433,12 +415,18 @@
       <header class="sec__head sec__head--left reveal">
         <p class="kicker">Why book with us</p>
         <h2>Swiss precision, minus the paperwork</h2>
+        <p class="sec__sub">Every pass and mountain ticket comes with a flat 25% off —
+          an offer no other authorised ticket partner makes.</p>
       </header>
 
       <ul class="feats">
-        <li class="reveal">
+        <li class="reveal feat--hl">
           <span class="feat__ico"><svg viewBox="0 0 24 24"><path d="M12 2 4 6v6c0 5 3.4 8.9 8 10 4.6-1.1 8-5 8-10V6Z"/><path d="m9 12 2 2 4-4"/></svg></span>
-          <div><h3>Authorised ticket partner</h3><p>Genuine tickets and passes, issued on the official Swiss system.</p></div>
+          <div>
+            <h3>The only authorised partner giving 25% off <span class="feat__tag">25% OFF</span></h3>
+            <p>Genuine tickets and passes, issued on the official Swiss system — and we are
+              the only authorised ticket partner giving a flat 25% off every one of them.</p>
+          </div>
         </li>
         <li class="reveal" style="--d:.06s">
           <span class="feat__ico"><svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg></span>
@@ -488,26 +476,26 @@
   <div class="wrap">
     <header class="sec__head reveal">
       <p class="kicker">Traveller stories</p>
-      <h2>4.8 out of 5, across 12,400 reviews</h2>
+      <h2>4.8 out of 5, across 5k+ reviews from Indian travellers</h2>
     </header>
     <div class="grid grid--3">
       <figure class="quote reveal">
         <div class="stars stars--sm" aria-label="5 out of 5"><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg></div>
-        <blockquote>“I'd been dreading working out passes versus point-to-point. They came back
-          with a plan in three hours and saved us about $200.”</blockquote>
-        <figcaption><b>Marta R.</b><span>Glacier Express · March</span></figcaption>
+        <blockquote>“I'd been dreading working out passes versus point-to-point for our family
+          trip. They came back with a plan in three hours and saved us about $200.”</blockquote>
+        <figcaption><b>Ananya S.</b><span>Glacier Express · Mumbai</span></figcaption>
       </figure>
       <figure class="quote reveal" style="--d:.08s">
         <div class="stars stars--sm" aria-label="5 out of 5"><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg></div>
         <blockquote>“Tickets were in my inbox before I'd closed the tab. Scanned straight from
-          the phone at Zurich HB — completely painless.”</blockquote>
-        <figcaption><b>Daniel K.</b><span>Swiss Travel Pass · June</span></figcaption>
+          the phone at Zurich HB — completely painless, even with an Indian card.”</blockquote>
+        <figcaption><b>Rohit I.</b><span>Swiss Travel Pass · Bengaluru</span></figcaption>
       </figure>
       <figure class="quote reveal" style="--d:.16s">
         <div class="stars stars--sm" aria-label="5 out of 5"><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg></div>
-        <blockquote>“We changed our dates twice. No fee, no fuss, and someone actually replied
-          on a Sunday. That's rare.”</blockquote>
-        <figcaption><b>Priya S.</b><span>Bernina Express · September</span></figcaption>
+        <blockquote>“We changed our dates twice while the visa came through. No fee, no fuss,
+          and someone actually replied on a Sunday. That's rare.”</blockquote>
+        <figcaption><b>Meera N.</b><span>Bernina Express · New Delhi</span></figcaption>
       </figure>
     </div>
   </div>
@@ -539,6 +527,12 @@
     <div class="book__formwrap reveal">
       <form class="bform" id="bookingForm" novalidate>
         <h3 class="bform__h">Request your trip plan</h3>
+
+        <p class="promo promo--bform">
+          <span class="promo__badge">25% OFF</span>
+          <span><b>25% off every ticket &amp; pass.</b> Every price you see is already
+            reduced by 25%, and the same discount is applied to the quote we send you.</span>
+        </p>
 
         <div class="row">
           <div class="fld">
@@ -582,13 +576,21 @@
               <option>Bernina Express</option>
               <option>GoldenPass Line</option>
             </optgroup>
-            <optgroup label="Mountain railways">
-              <option>Jungfraujoch</option>
-              <option>Gornergrat</option>
-              <option>Schilthorn</option>
-              <option>Mount Pilatus</option>
-              <option>Rigi</option>
-              <option>Harder Kulm</option>
+            <optgroup label="Mountain excursion tickets">
+              <option>Schilthorn Ticket</option>
+              <option>Titlis Ticket</option>
+              <option>Jungfraujoch Ticket</option>
+              <option>Glacier 3000 Ticket</option>
+              <option>Stanserhorn Cabrio Ticket</option>
+              <option>Gornergrat Ticket</option>
+              <option>Matterhorn Glacier Paradise Ticket</option>
+              <option>Pilatus Ticket</option>
+              <option>Rochers de Naye Ticket</option>
+              <option>Rigi Ticket</option>
+              <option>Grindelwald-First Ticket</option>
+              <option>Brienzer Rothorn Ticket</option>
+              <option>Schynige Platte Ticket</option>
+              <option>Harder Kulm Ticket</option>
             </optgroup>
             <optgroup label="Other">
               <option>Point-to-point tickets</option>
@@ -596,17 +598,6 @@
             </optgroup>
           </select>
           <p class="err" data-for="product"></p>
-        </div>
-
-        <div class="row">
-          <div class="fld">
-            <label for="fromStation">Starting from</label>
-            <input type="text" id="fromStation" name="fromStation" list="stations" placeholder="Zurich HB" autocomplete="off" />
-          </div>
-          <div class="fld">
-            <label for="toStation">Going to</label>
-            <input type="text" id="toStation" name="toStation" list="stations" placeholder="Zermatt" autocomplete="off" />
-          </div>
         </div>
 
         <div class="row">

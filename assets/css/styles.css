@@ -118,9 +118,18 @@ h1,h2,h3,h4{line-height:1.12;letter-spacing:-.022em;font-weight:700}
 }
 .kicker--on-dark{color:#ff8f97}
 
-.price{display:flex;align-items:baseline;gap:.35rem;white-space:nowrap}
+.price{display:flex;align-items:baseline;gap:.35rem;flex-wrap:wrap;white-space:nowrap}
 .price small{font-size:.78rem;color:var(--muted);font-weight:600}
 .price b{font-size:1.42rem;font-weight:750;letter-spacing:-.03em}
+.price__was{
+  font-size:1rem;font-weight:600;color:var(--muted);
+  text-decoration:line-through;text-decoration-thickness:1.5px;
+  text-decoration-color:color-mix(in srgb,var(--red) 70%,transparent);
+}
+.price__off{
+  align-self:center;padding:.14rem .38rem;border-radius:var(--r-pill);
+  background:var(--red);color:#fff;font-size:.66rem;font-weight:800;letter-spacing:.03em;
+}
 
 .badge{
   position:absolute;left:.85rem;bottom:.85rem;z-index:2;
@@ -256,18 +265,13 @@ html[data-theme="dark"] .ico--moon{display:block}
   border-radius:var(--r-xl);box-shadow:var(--sh-4);
   padding:.5rem .5rem .95rem;
 }
-.planner__tabs{display:flex;gap:.25rem;padding:.35rem;background:var(--bg-soft);
-               border-radius:var(--r-lg);margin-bottom:.9rem}
-.ptab{
-  flex:1;padding:.62rem .5rem;border-radius:calc(var(--r-lg) - 5px);
-  font-size:.86rem;font-weight:620;color:var(--muted);
-  transition:.22s var(--ease);
-}
-.ptab:hover{color:var(--ink)}
-.ptab.is-on{background:var(--card);color:var(--ink);box-shadow:var(--sh-1)}
+.planner__head{padding:.55rem .8rem .9rem}
+.planner__title{font-size:1.02rem;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+.planner__sub{font-size:.79rem;color:var(--muted);margin-top:.18rem}
 
 .planner__body{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;padding-inline:.6rem}
 .pfield{display:flex;flex-direction:column;gap:.34rem;min-width:0}
+.pfield--wide{grid-column:1/-1}
 .pfield label{font-size:.775rem;font-weight:650;color:var(--muted);
               letter-spacing:.01em;padding-left:.2rem}
 .ctl{position:relative;display:flex;align-items:center}
@@ -314,8 +318,13 @@ html[data-theme="dark"] .ico--moon{display:block}
 
 /* trust strip */
 .trust{border-block:1px solid var(--line);background:var(--bg)}
-.trust__in{display:grid;grid-template-columns:repeat(4,1fr);
-           gap:1rem;padding-block:clamp(1.8rem,3.5vw,2.6rem)}
+.trust__wrap{padding-block:clamp(1.8rem,3.5vw,2.6rem)}
+.trust__kicker{
+  text-align:center;margin-bottom:1.25rem;
+  font-size:.74rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--red);
+}
+.trust__in{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
 .stat{text-align:center}
 .stat b{display:block;font-size:clamp(1.7rem,3.4vw,2.5rem);font-weight:750;
         letter-spacing:-.045em;line-height:1;margin-bottom:.4rem}
@@ -363,6 +372,7 @@ html[data-theme="dark"] .ico--moon{display:block}
 }
 .pass__foot{margin-top:auto;display:grid;gap:.9rem}
 .pass__foot .price b{font-size:1.85rem}
+.pass__foot .price__was{font-size:1.18rem}
 
 /* routes */
 .rcard{
@@ -412,6 +422,7 @@ html[data-theme="dark"] .ico--moon{display:block}
 .peak__foot{display:flex;align-items:center;justify-content:space-between;gap:.7rem}
 .peak__foot .price b{color:#fff;font-size:1.2rem}
 .peak__foot .price small{color:rgba(255,255,255,.65)}
+.peak__foot .price__was{font-size:.92rem;color:rgba(255,255,255,.62);text-decoration-color:rgba(255,255,255,.7)}
 .peak .btn--tiny{border-color:rgba(255,255,255,.4);--btn-fg:#fff;
                  background:rgba(255,255,255,.1);backdrop-filter:blur(8px)}
 .peak .btn--tiny:hover{background:#fff;--btn-fg:var(--ink);border-color:#fff}
@@ -435,6 +446,18 @@ html[data-theme="dark"] .ico--moon{display:block}
 .feats{list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;
        gap:1.5rem 1.6rem;margin-top:.5rem}
 .feats li{display:flex;gap:.9rem}
+.feat--hl{
+  grid-column:1/-1;padding:.95rem 1.05rem;border-radius:var(--r-lg);
+  background:var(--red-050);
+  border:1px solid color-mix(in srgb,var(--red) 28%,transparent);
+}
+.feat--hl .feat__ico{background:var(--red);color:#fff;border-color:transparent}
+.feat--hl p{color:var(--ink-700)}
+.feat__tag{
+  display:inline-block;vertical-align:.1em;margin-left:.45rem;
+  padding:.16rem .42rem;border-radius:var(--r-pill);
+  background:var(--red);color:#fff;font-size:.64rem;font-weight:800;letter-spacing:.04em;
+}
 .feat__ico{
   flex:none;width:2.5rem;height:2.5rem;border-radius:var(--r-sm);
   display:grid;place-items:center;
@@ -507,7 +530,23 @@ html[data-theme="dark"] .book{background:#06101a}
   border-radius:var(--r-xl);padding:clamp(1.4rem,3vw,2.35rem);
   box-shadow:var(--sh-4);border:1px solid var(--line);
 }
-.bform__h{font-size:1.32rem;margin-bottom:1.4rem;letter-spacing:-.03em}
+.bform__h{font-size:1.32rem;margin-bottom:.9rem;letter-spacing:-.03em}
+/* 25%-off promo strip — shared by the hero planner and the booking form */
+.promo{
+  display:flex;align-items:center;gap:.65rem;
+  padding:.72rem .85rem;border-radius:var(--r);
+  background:var(--red-050);border:1px solid color-mix(in srgb,var(--red) 30%,transparent);
+  font-size:.82rem;line-height:1.45;color:var(--ink-700);
+}
+.promo b{color:var(--ink)}
+.promo__badge{
+  flex:none;padding:.32rem .52rem;border-radius:var(--r-sm);
+  background:var(--red);color:#fff;font-size:.72rem;font-weight:800;
+  letter-spacing:.03em;white-space:nowrap;
+  box-shadow:0 2px 8px color-mix(in srgb,var(--red) 40%,transparent);
+}
+.promo--bform{margin-bottom:1.4rem}
+.promo--planner{margin:0 .6rem .9rem;font-size:.79rem}
 .row{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
 .row--3{grid-template-columns:repeat(3,1fr)}
 .fld{display:flex;flex-direction:column;gap:.38rem;margin-bottom:.9rem;min-width:0}
