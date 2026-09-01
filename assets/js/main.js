@@ -5,10 +5,9 @@
    ═══════════════════════════════════════════════════════════ */
 
 const CONFIG = {
-  // Deploy google-apps-script.gs as a Web App ("Anyone" access),
-  // then paste the /exec URL here. Example:
-  // SHEET_ENDPOINT: "https://script.google.com/macros/s/AKfycb.../exec"
-  SHEET_ENDPOINT: "",
+  // Deploy Code.gs as a Web App ("Anyone" access),
+  // then paste the /exec URL here.
+  SHEET_ENDPOINT: "https://script.google.com/macros/s/AKfycbybgloO1mOX1mU7QrnBDAA7mZ5dpF5taLc7peRO1a00_fQi8cKD_yi2OYeFCfDg_x1ZVA/exec",
 
   // Shown to the user if the endpoint is unreachable.
   FALLBACK_EMAIL: "hello@example.com"

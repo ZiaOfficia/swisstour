@@ -7,7 +7,7 @@ from the booking form are written to a Google Sheet.
 ```
 swisscharge/
 ├── index.html
-├── google-apps-script.gs      ← paste into Apps Script, deploy, get URL
+├── Code.gs                    ← paste into Apps Script, deploy, get URL
 ├── assets/
 │   ├── css/styles.css
 │   ├── js/main.js             ← CONFIG.SHEET_ENDPOINT goes here
@@ -27,12 +27,14 @@ python -m http.server 8000
 
 1. Create a Google Sheet.
 2. **Extensions ▸ Apps Script**, delete the sample code, paste all of
-   `google-apps-script.gs`.
+   `Code.gs`.
 3. **Deploy ▸ New deployment ▸ Web app**
    - Execute as: **Me**
    - Who has access: **Anyone** ← must be *Anyone*, not *Anyone with a Google account*
-4. Copy the `/exec` URL.
-5. Open `assets/js/main.js` and paste it into the first setting:
+4. Authorise when prompted (*Advanced ▸ Go to project ▸ Allow*). The Gmail
+   scope is what lets it send the notification email.
+5. Copy the `/exec` URL.
+6. Open `assets/js/main.js` and paste it into the first setting:
 
 ```js
 const CONFIG = {
@@ -47,23 +49,37 @@ frozen header row on the first submission.
 To check the deployment is live, open the `/exec` URL directly — it should
 return `{"result":"success","message":"SwissRail endpoint is live."}`.
 
+To check the whole path end to end, run `testSubmission` from the Apps Script
+editor: it writes one dummy row and sends one notification email, so you can
+verify both halves before wiring up the site. Delete the test row afterwards.
+
 Until the endpoint is set, the form validates normally and then tells you it
 isn't connected yet, so nothing fails silently.
 
 ### Columns written
 
-`Received at · Full name · Email · Phone · Country · Interested in · From · To ·
+`Received at · Full name · Email · Phone · Country · Interested in ·
 Travel date · Return date · Adults · Children · Class · Message · Consent ·
 Page URL · Referrer · User agent`
 
 To add a field: add the input to `index.html`, add its `name` to the `payload`
 object in `main.js`, then add the same key to `FIELDS` and a label to `HEADERS`
-in the Apps Script. Order in those two arrays defines column order.
+in `Code.gs`. Order in those two arrays defines column order — keep `FIELDS` in
+step with the payload, or the columns drift out of line with their labels.
 
-### Email alerts (optional)
+Re-deploy after **any** edit to `Code.gs` (*Deploy ▸ Manage deployments ▸ edit ▸
+Version: New version*), otherwise the old code keeps serving.
 
-In `google-apps-script.gs`, set `NOTIFY_EMAIL` to your address. Every
-submission then sends you a summary with the enquirer's address as reply-to.
+### Email alerts
+
+`NOTIFY_EMAIL` in `Code.gs` receives every submission as an HTML summary, with
+the enquirer's address set as reply-to. Comma-separate the value for several
+recipients, or set it to `''` to turn notifications off. Set `SEND_AUTOREPLY` to
+`true` to also send the enquirer a confirmation.
+
+Mail is sent inside its own try/catch, so a delivery failure never loses a row
+that has already been written. Note the ~100 emails/day `MailApp` quota on a
+consumer Gmail account.
 
 ## What's on the page
 
