@@ -7,7 +7,7 @@
 const CONFIG = {
   // Deploy Code.gs as a Web App ("Anyone" access),
   // then paste the /exec URL here.
-  SHEET_ENDPOINT: "https://script.google.com/macros/s/AKfycbybgloO1mOX1mU7QrnBDAA7mZ5dpF5taLc7peRO1a00_fQi8cKD_yi2OYeFCfDg_x1ZVA/exec",
+  SHEET_ENDPOINT: "https://script.google.com/macros/s/AKfycbxfvmDKiuvsaJbw9yPJIR-JVdAnMj7KXIXtC6Gi97NafiELbD_OeqtuxxjS59dCCOXFAg/exec",
 
   // Shown to the user if the endpoint is unreachable.
   FALLBACK_EMAIL: "hello@example.com"
@@ -155,17 +155,9 @@ const isoToday = () => new Date().toISOString().slice(0, 10);
    ───────────────────────────────────────────────────────── */
 (() => {
   const today = isoToday();
-  ["#p_date", "#travelDate", "#returnDate"].forEach(sel => {
+  ["#p_date", "#travelDate"].forEach(sel => {
     const el = $(sel);
     if (el) el.min = today;
-  });
-
-  const out = $("#travelDate");
-  const back = $("#returnDate");
-  out?.addEventListener("change", () => {
-    if (!back) return;
-    back.min = out.value || today;
-    if (back.value && back.value < back.min) back.value = "";
   });
 })();
 
@@ -235,7 +227,7 @@ function goToForm() {
       ],
       { duration: 900, easing: "ease-out" }
     );
-    $("#fullName")?.focus({ preventScroll: true });
+    $("#name")?.focus({ preventScroll: true });
   }, 620);
 }
 
@@ -250,7 +242,7 @@ function goToForm() {
   const msg = $("#formMsg");
 
   const RULES = {
-    fullName: v => (v.trim().length >= 2 ? "" : "Please enter your name."),
+    name: v => (v.trim().length >= 2 ? "" : "Please enter your name."),
     email: v =>
       /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(v.trim())
         ? ""
@@ -260,11 +252,7 @@ function goToForm() {
         ? ""
         : "Please enter a valid phone number.",
     product: v => (v ? "" : "Please choose what you're interested in."),
-    travelDate: v => (v ? "" : "Please pick a travel date."),
-    returnDate: v => {
-      const out = $("#travelDate").value;
-      return v && out && v < out ? "Return date can't be before departure." : "";
-    }
+    travelDate: v => (v ? "" : "Please pick a travel date.")
   };
 
   const showError = (name, text) => {
@@ -335,13 +323,12 @@ function goToForm() {
 
     const payload = {
       timestamp:   new Date().toISOString(),
-      fullName:    $("#fullName").value.trim(),
+      name:        $("#name").value.trim(),
       email:       $("#email").value.trim(),
       phone:       $("#phone").value.trim(),
-      country:     $("#country").value.trim(),
       product:     $("#product").value,
       travelDate:  $("#travelDate").value,
-      returnDate:  $("#returnDate").value,
+      duration:    $("#duration").value,
       adults:      $("#adults").value,
       children:    $("#children").value,
       travelClass: $("#travelClass").value,
@@ -361,7 +348,7 @@ function goToForm() {
       $$(".fld.is-bad").forEach(f => f.classList.remove("is-bad"));
       $$(".err.is-on").forEach(f => f.classList.remove("is-on"));
       say(
-        `Thank you, ${payload.fullName.split(" ")[0]} — your request is in. ` +
+        `Thank you, ${payload.name.split(" ")[0]} — your request is in. ` +
         `A rail specialist will email ${payload.email} within one working day.`,
         "ok"
       );

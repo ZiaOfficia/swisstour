@@ -33,13 +33,12 @@ var SENDER_NAME = 'SwissRail Website';
 /** Column order. Keys must match the payload posted by assets/js/main.js. */
 var FIELDS = [
   'timestamp',
-  'fullName',
+  'name',
   'email',
   'phone',
-  'country',
   'product',
   'travelDate',
-  'returnDate',
+  'duration',
   'adults',
   'children',
   'travelClass',
@@ -53,13 +52,12 @@ var FIELDS = [
 /** Human-readable header row, same order as FIELDS. */
 var HEADERS = [
   'Received at',
-  'Full name',
+  'Name',
   'Email',
   'Phone',
-  'Country',
   'Interested in',
   'Travel date',
-  'Return date',
+  'Duration',
   'Adults',
   'Children',
   'Class',
@@ -138,13 +136,12 @@ function testSubmission() {
   var res = doPost({
     parameter: {
       timestamp: new Date().toISOString(),
-      fullName: 'Test Traveller',
+      name: 'Test Traveller',
       email: 'test@example.com',
       phone: '+41 79 000 00 00',
-      country: 'Switzerland',
       product: 'Swiss Travel Pass',
       travelDate: '2026-09-15',
-      returnDate: '2026-09-22',
+      duration: '8',
       adults: '2',
       children: '1',
       travelClass: 'First',
@@ -181,7 +178,7 @@ function getSheet_() {
 }
 
 function notify_(p, rowNumber) {
-  var subject = 'New SwissRail enquiry - ' + (p.fullName || 'unknown') +
+  var subject = 'New SwissRail enquiry - ' + (p.name || 'unknown') +
                 (p.product ? ' (' + p.product + ')' : '');
 
   var rows = FIELDS.map(function (key, i) {
@@ -223,7 +220,7 @@ function notify_(p, rowNumber) {
 function autoReply_(p) {
   if (!isEmail_(p.email)) return;
 
-  var first = String(p.fullName || '').trim().split(' ')[0] || 'there';
+  var first = String(p.name || '').trim().split(' ')[0] || 'there';
   var body =
     'Hi ' + first + ',\n\n' +
     'Thanks for your enquiry - we have it, and a rail specialist will reply ' +
@@ -231,7 +228,7 @@ function autoReply_(p) {
     'What you sent us:\n' +
     '  Interested in: ' + (p.product || '-') + '\n' +
     '  Travel date:   ' + (p.travelDate || '-') + '\n' +
-    '  Return date:   ' + (p.returnDate || '-') + '\n' +
+    '  Duration:      ' + (p.duration ? p.duration + ' days' : '-') + '\n' +
     '  Travellers:    ' + (p.adults || '-') + ' adult(s), ' +
                           (p.children || '0') + ' child(ren)\n\n' +
     'Kind regards,\nSwissRail';

@@ -529,9 +529,9 @@
 
         <div class="row">
           <div class="fld">
-            <label for="fullName">Full name <i>*</i></label>
-            <input type="text" id="fullName" name="fullName" placeholder="Anna Meier" autocomplete="name" required />
-            <p class="err" data-for="fullName"></p>
+            <label for="name">Name <i>*</i></label>
+            <input type="text" id="name" name="name" placeholder="Anna Meier" autocomplete="name" required />
+            <p class="err" data-for="name"></p>
           </div>
           <div class="fld">
             <label for="email">Email <i>*</i></label>
@@ -540,16 +540,10 @@
           </div>
         </div>
 
-        <div class="row">
-          <div class="fld">
-            <label for="phone">Phone / WhatsApp</label>
-            <input type="tel" id="phone" name="phone" placeholder="+41 79 000 00 00" autocomplete="tel" />
-            <p class="err" data-for="phone"></p>
-          </div>
-          <div class="fld">
-            <label for="country">Country of residence</label>
-            <input type="text" id="country" name="country" placeholder="India" autocomplete="country-name" />
-          </div>
+        <div class="fld">
+          <label for="phone">Phone / WhatsApp</label>
+          <input type="tel" id="phone" name="phone" placeholder="+41 79 000 00 00" autocomplete="tel" />
+          <p class="err" data-for="phone"></p>
         </div>
 
         <div class="fld">
@@ -593,9 +587,15 @@
             <p class="err" data-for="travelDate"></p>
           </div>
           <div class="fld">
-            <label for="returnDate">Return date</label>
-            <input type="date" id="returnDate" name="returnDate" />
-            <p class="err" data-for="returnDate"></p>
+            <label for="duration">Duration</label>
+            <select id="duration" name="duration">
+              <option value="">Please choose…</option>
+              <option value="3">3 days</option>
+              <option value="4">4 days</option>
+              <option value="6">6 days</option>
+              <option value="8">8 days</option>
+              <option value="15">15 days</option>
+            </select>
           </div>
         </div>
 

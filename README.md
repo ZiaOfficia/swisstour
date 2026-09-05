@@ -58,8 +58,8 @@ isn't connected yet, so nothing fails silently.
 
 ### Columns written
 
-`Received at · Full name · Email · Phone · Country · Interested in ·
-Travel date · Return date · Adults · Children · Class · Message · Consent ·
+`Received at · Name · Email · Phone · Interested in · Travel date · Duration ·
+Adults · Children · Class · Message · Consent ·
 Page URL · Referrer · User agent`
 
 To add a field: add the input to `index.html`, add its `name` to the `payload`
@@ -97,7 +97,7 @@ accordion · CTA band · footer · sticky mobile CTA.
 - **Dark mode.** Toggle in the utility bar; defaults to the OS setting and
   remembers the choice in `localStorage`.
 - **Validation** runs on submit, focuses and scrolls to the first bad field,
-  then clears each error live as it's fixed. Return date can't precede
+  then clears each error live as it's fixed.
   departure; past dates are blocked.
 - **Spam honeypot** — a hidden `company` field. If filled, the submit is
   silently dropped.
