@@ -147,6 +147,46 @@ h1,h2,h3,h4{line-height:1.12;letter-spacing:-.022em;font-weight:700}
 .grid--3{grid-template-columns:repeat(3,1fr)}
 
 /* ── 3. CHROME ─────────────────────────────────────────── */
+/* top offer bar — states the live discount and links to the coupon field */
+.offerbar{
+  background:linear-gradient(90deg,var(--red) 0%,var(--red-600) 100%);
+  color:#fff;font-size:.815rem;position:relative;z-index:61;
+}
+.offerbar__in{
+  display:flex;align-items:center;justify-content:center;
+  gap:.5rem 1.1rem;flex-wrap:wrap;min-height:42px;padding-block:.45rem;
+}
+.offerbar__msg{display:flex;align-items:center;gap:.55rem;line-height:1.4}
+.offerbar__msg b{font-weight:750}
+.offerbar__badge{
+  flex:none;padding:.24rem .5rem;border-radius:var(--r-sm);
+  background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.32);
+  font-size:.72rem;font-weight:800;letter-spacing:.03em;white-space:nowrap;
+}
+.offerbar__cpn{display:none}
+.offerbar__cta{
+  display:inline-flex;align-items:center;gap:.35rem;
+  padding:.32rem .75rem;border-radius:var(--r-pill);
+  background:#fff;color:var(--red-600);
+  font-size:.775rem;font-weight:750;white-space:nowrap;
+  transition:.2s var(--ease);
+}
+.offerbar__cta:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(0,0,0,.22)}
+.offerbar__cta:focus-visible{outline:2.5px solid #fff;outline-offset:2px}
+.offerbar__cta svg{transition:transform .2s var(--ease)}
+.offerbar__cta:hover svg{transform:translateX(2px)}
+
+/* coupon in force */
+.offerbar.is-coupon{background:linear-gradient(90deg,#14603a 0%,#0d4a2c 100%)}
+.offerbar.is-coupon .offerbar__std,
+.offerbar.is-coupon .offerbar__cta{display:none}
+.offerbar.is-coupon .offerbar__cpn{display:inline}
+
+@media (max-width:640px){
+  .offerbar__in{justify-content:space-between;text-align:left}
+  .offerbar{font-size:.775rem}
+}
+
 .utilbar{
   background:var(--alpine);color:#c9dced;font-size:.795rem;
   position:relative;z-index:60;
@@ -531,7 +571,7 @@ html[data-theme="dark"] .book{background:#06101a}
   box-shadow:var(--sh-4);border:1px solid var(--line);
 }
 .bform__h{font-size:1.32rem;margin-bottom:.9rem;letter-spacing:-.03em}
-/* 25%-off promo strip — shared by the hero planner and the booking form */
+/* discount promo strip — shared by the hero planner and the booking form */
 .promo{
   display:flex;align-items:center;gap:.65rem;
   padding:.72rem .85rem;border-radius:var(--r);
@@ -547,6 +587,40 @@ html[data-theme="dark"] .book{background:#06101a}
 }
 .promo--bform{margin-bottom:1.4rem}
 .promo--planner{margin:0 .6rem .9rem;font-size:.79rem}
+
+/* coupon field — lifts the standard discount to the coupon rate */
+.coupon{margin-bottom:1.2rem}
+.coupon>label{display:block;font-size:.83rem;font-weight:640;color:var(--ink-700);
+              margin-bottom:.38rem}
+.coupon__row{display:flex;gap:.55rem;align-items:stretch}
+.coupon__row input{
+  flex:1 1 auto;min-width:0;padding:.78rem .9rem;background:var(--bg-soft);
+  border:1.5px solid var(--line);border-radius:var(--r);
+  font-size:.94rem;letter-spacing:.06em;text-transform:uppercase;
+  transition:.2s var(--ease);appearance:none;
+}
+.coupon__row input::placeholder{color:var(--muted);opacity:.75;
+                                letter-spacing:normal;text-transform:none}
+.coupon__row input:hover{border-color:var(--line-2)}
+.coupon__row input:focus{outline:none;background:var(--card);border-color:var(--red);
+                         box-shadow:0 0 0 4px var(--red-050)}
+.coupon__btn{flex:none;padding-inline:1.15rem;white-space:nowrap}
+.coupon__msg{display:none;margin-top:.45rem;font-size:.8rem;font-weight:600;line-height:1.45}
+.coupon__msg.is-on{display:block}
+.coupon__msg.ok{color:#14603a}
+.coupon__msg.bad{color:var(--red)}
+html[data-theme="dark"] .coupon__msg.ok{color:#7fe0ab}
+.coupon.is-applied .coupon__row input{
+  border-color:#a8e5c4;background:#e9f9f0;color:#14603a;font-weight:700;
+}
+html[data-theme="dark"] .coupon.is-applied .coupon__row input{
+  border-color:#1f6944;background:#0d2c1e;color:#7fe0ab;
+}
+@media (max-width:420px){
+  .coupon__row{flex-wrap:wrap}
+  .coupon__btn{width:100%}
+}
+
 .row{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
 .row--3{grid-template-columns:repeat(3,1fr)}
 .fld{display:flex;flex-direction:column;gap:.38rem;margin-bottom:.9rem;min-width:0}

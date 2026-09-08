@@ -232,6 +232,143 @@ function goToForm() {
 }
 
 /* ─────────────────────────────────────────────────────────
+   pricing / coupon
+   ─────────────────────────────────────────────────────────
+   The page runs on a standard discount. A valid coupon lifts it to the
+   coupon rate and re-prices everything that carries [data-base].
+
+   Accepted codes are never stored in clear text here — only the FNV-1a
+   digest of each one — so no code can be read off the page or its source.
+   Client-side checking is a convenience; the discount that actually
+   applies is confirmed by a specialist against the quote.
+   ───────────────────────────────────────────────────────── */
+const PRICING = {
+  STANDARD_OFF: 15,   // what every visitor gets
+  COUPON_OFF:   25,   // what a valid coupon unlocks
+  CODE_DIGESTS: ["d87de64b", "3fb6bb58"]
+};
+
+/* FNV-1a, 32-bit → 8 hex chars. */
+function digest(str) {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < str.length; i++) {
+    h ^= str.charCodeAt(i);
+    h = Math.imul(h, 0x01000193) >>> 0;
+  }
+  return h.toString(16).padStart(8, "0");
+}
+
+const normaliseCode = v => v.trim().toUpperCase().replace(/\s+/g, "");
+const isValidCode = code =>
+  code !== "" && PRICING.CODE_DIGESTS.includes(digest("sr:" + code));
+
+/* the discount in force right now */
+let currentOff = PRICING.STANDARD_OFF;
+let appliedCode = "";
+
+/** Repaints every percentage label and every price on the page. */
+function applyDiscount(pct) {
+  currentOff = pct;
+  $(".offerbar")?.classList.toggle("is-coupon", pct === PRICING.COUPON_OFF);
+
+  $$(".js-pct").forEach(el => { el.textContent = pct + "%"; });
+
+  $$("[data-base]").forEach(el => {
+    const base = parseFloat(el.dataset.base);
+    const now = $(".price__now", el);
+    if (!now || !isFinite(base)) return;
+    now.textContent = "$" + Math.floor(base * (1 - pct / 100));
+  });
+}
+
+/** Sends the visitor to the booking form with the coupon field ready to type in. */
+function goToCoupon() {
+  const target = $("#book");
+  const input  = $("#coupon");
+  if (!target || !input) return;
+
+  target.scrollIntoView({ behavior: "smooth", block: "start" });
+  setTimeout(() => {
+    input.focus({ preventScroll: true });
+    input.select();
+    $("#couponBox")?.animate(
+      [
+        { boxShadow: "0 0 0 0 rgba(227,6,19,.5)" },
+        { boxShadow: "0 0 0 12px rgba(227,6,19,0)" }
+      ],
+      { duration: 900, easing: "ease-out" }
+    );
+  }, 620);
+}
+
+$$(".js-coupon-jump").forEach(el => el.addEventListener("click", goToCoupon));
+
+(() => {
+  const box   = $("#couponBox");
+  const input = $("#coupon");
+  const btn   = $("#couponBtn");
+  const msg   = $("#couponMsg");
+  if (!box || !input || !btn) return;
+
+  const say = (text, kind) => {
+    msg.textContent = text;
+    msg.className = `coupon__msg is-on ${kind}`;
+  };
+
+  const clearCoupon = () => {
+    appliedCode = "";
+    box.classList.remove("is-applied");
+    btn.textContent = "Apply";
+    applyDiscount(PRICING.STANDARD_OFF);
+  };
+
+  const apply = () => {
+    const code = normaliseCode(input.value);
+
+    if (!code) {
+      clearCoupon();
+      say("Please enter a coupon code.", "bad");
+      return;
+    }
+
+    if (!isValidCode(code)) {
+      clearCoupon();
+      say(`That coupon isn't valid. Your ${PRICING.STANDARD_OFF}% discount still applies.`, "bad");
+      input.focus({ preventScroll: true });
+      return;
+    }
+
+    input.value = code;
+    appliedCode = code;
+    box.classList.add("is-applied");
+    btn.textContent = "Applied";
+    applyDiscount(PRICING.COUPON_OFF);
+    say(`Coupon applied — you're getting ${PRICING.COUPON_OFF}% off. Every price on this page has been updated.`, "ok");
+  };
+
+  btn.addEventListener("click", apply);
+
+  // Enter inside the coupon field applies the code instead of submitting
+  input.addEventListener("keydown", e => {
+    if (e.key !== "Enter") return;
+    e.preventDefault();
+    apply();
+  });
+
+  // editing an applied code drops back to the standard discount
+  input.addEventListener("input", () => {
+    msg.className = "coupon__msg";
+    btn.textContent = appliedCode ? "Applied" : "Apply";
+    if (appliedCode && normaliseCode(input.value) !== appliedCode) clearCoupon();
+  });
+
+  box.addEventListener("sr:reset", clearCoupon);
+
+  // keep the markup and the script in step on load
+  applyDiscount(PRICING.STANDARD_OFF);
+})();
+
+/* ─────────────────────────────────────────────────────────
    booking form: validation + Google Sheets submit
    ───────────────────────────────────────────────────────── */
 (() => {
@@ -333,6 +470,8 @@ function goToForm() {
       children:    $("#children").value,
       travelClass: $("#travelClass").value,
       message:     $("#message").value.trim(),
+      coupon:      appliedCode,
+      discount:    currentOff + "%",
       consent:     $("#consent").checked ? "Yes" : "No",
       pageUrl:     location.href,
       referrer:    document.referrer || "direct",
@@ -347,6 +486,7 @@ function goToForm() {
       form.reset();
       $$(".fld.is-bad").forEach(f => f.classList.remove("is-bad"));
       $$(".err.is-on").forEach(f => f.classList.remove("is-on"));
+      $("#couponBox")?.dispatchEvent(new Event("sr:reset"));
       say(
         `Thank you, ${payload.name.split(" ")[0]} — your request is in. ` +
         `A rail specialist will email ${payload.email} within one working day.`,

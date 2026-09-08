@@ -20,6 +20,23 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
+<!-- ══════════════════ OFFER BAR ══════════════════ -->
+<div class="offerbar" id="top">
+  <div class="wrap offerbar__in">
+    <p class="offerbar__msg">
+      <span class="offerbar__badge"><span class="js-pct">15%</span> OFF</span>
+      <span class="offerbar__std"><b><span class="js-pct">15%</span> off is already applied</b>
+        to every price on this page.</span>
+      <span class="offerbar__cpn"><b>Coupon applied — <span class="js-pct">25%</span> off</b>
+        every price on this page.</span>
+    </p>
+    <button class="offerbar__cta js-coupon-jump" type="button">
+      Want 25% off every price? Use your coupon
+      <svg class="ico ico--xs" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+    </button>
+  </div>
+</div>
+
 <!-- ══════════════════ UTILITY BAR ══════════════════ -->
 <div class="utilbar">
   <div class="wrap utilbar__in">
@@ -66,7 +83,7 @@
 <main id="main">
 
 <!-- ══════════════════ HERO ══════════════════ -->
-<section class="hero" id="top">
+<section class="hero">
   <div class="hero__media">
     <img src="assets/img/hero-landwasser.jpg" alt="A red Rhaetian Railway train crossing the Landwasser Viaduct in the Swiss Alps" fetchpriority="high" />
     <div class="hero__scrim"></div>
@@ -75,7 +92,7 @@
   <div class="wrap hero__in">
     <div class="hero__copy">
       <p class="eyebrow reveal">
-        <span class="dot"></span> Authorised ticket partner · 25% off every ticket
+        <span class="dot"></span> Authorised ticket partner · <span class="js-pct">15%</span> off every ticket
       </p>
       <h1 class="reveal" style="--d:.06s">
         All of Switzerland,<br />on <em>one ticket</em>.
@@ -103,8 +120,8 @@
       </div>
 
       <p class="promo promo--planner">
-        <span class="promo__badge">25% OFF</span>
-        <span><b>25% off every ticket &amp; pass.</b> Already applied to every price on this page.</span>
+        <span class="promo__badge"><span class="js-pct">15%</span> OFF</span>
+        <span><b><span class="js-pct">15%</span> off every ticket &amp; pass.</b> Already applied to every price on this page.</span>
       </p>
 
       <form class="planner__body" id="planner" novalidate>
@@ -205,7 +222,7 @@
           <li>Kids under 16 travel free</li>
         </ul>
         <div class="pass__foot">
-          <p class="price"><small>from</small> <s class="price__was">$318</s> <b>$238</b> <span class="price__off">&minus;25%</span></p>
+          <p class="price" data-base="318"><small>from</small> <s class="price__was">$318</s> <b class="price__now">$270</b> <span class="price__off">&minus;<span class="js-pct">15%</span></span></p>
           <button class="btn btn--primary btn--full js-pick" data-product="Swiss Travel Pass">Select pass</button>
         </div>
       </article>
@@ -223,7 +240,7 @@
           <li>Change plans without penalty</li>
         </ul>
         <div class="pass__foot">
-          <p class="price"><small>from</small> <s class="price__was">$362</s> <b>$271</b> <span class="price__off">&minus;25%</span></p>
+          <p class="price" data-base="362"><small>from</small> <s class="price__was">$362</s> <b class="price__now">$307</b> <span class="price__off">&minus;<span class="js-pct">15%</span></span></p>
           <button class="btn btn--primary btn--full js-pick" data-product="Swiss Travel Pass Flex">Select pass</button>
         </div>
       </article>
@@ -241,7 +258,7 @@
           <li>Ideal for longer, slower stays</li>
         </ul>
         <div class="pass__foot">
-          <p class="price"><small>from</small> <s class="price__was">$188</s> <b>$141</b> <span class="price__off">&minus;25%</span></p>
+          <p class="price" data-base="188"><small>from</small> <s class="price__was">$188</s> <b class="price__now">$159</b> <span class="price__off">&minus;<span class="js-pct">15%</span></span></p>
           <button class="btn btn--primary btn--full js-pick" data-product="Swiss Half Fare Card">Select card</button>
         </div>
       </article>
@@ -270,7 +287,7 @@
           <p>The slowest express train in the world — 291 bridges, 91 tunnels and the
              Oberalp Pass, all through floor-to-ceiling glass.</p>
           <div class="rcard__foot">
-            <p class="price"><small>from</small> <s class="price__was">$179</s> <b>$134</b> <span class="price__off">&minus;25%</span></p>
+            <p class="price" data-base="179"><small>from</small> <s class="price__was">$179</s> <b class="price__now">$152</b> <span class="price__off">&minus;<span class="js-pct">15%</span></span></p>
             <button class="btn btn--ghost js-pick" data-product="Glacier Express">Reserve seat</button>
           </div>
         </div>
@@ -286,7 +303,7 @@
           <p>A UNESCO World Heritage line that climbs from palm trees to glaciers
              at 2,253 m — without a single rack rail.</p>
           <div class="rcard__foot">
-            <p class="price"><small>from</small> <s class="price__was">$72</s> <b>$54</b> <span class="price__off">&minus;25%</span></p>
+            <p class="price" data-base="72"><small>from</small> <s class="price__was">$72</s> <b class="price__now">$61</b> <span class="price__off">&minus;<span class="js-pct">15%</span></span></p>
             <button class="btn btn--ghost js-pick" data-product="Bernina Express">Reserve seat</button>
           </div>
         </div>
@@ -302,7 +319,7 @@
           <p>Three lakes, the Brünig Pass and the vineyards of Lavaux — the classic
              route from Central Switzerland to the Riviera.</p>
           <div class="rcard__foot">
-            <p class="price"><small>from</small> <s class="price__was">$68</s> <b>$51</b> <span class="price__off">&minus;25%</span></p>
+            <p class="price" data-base="68"><small>from</small> <s class="price__was">$68</s> <b class="price__now">$57</b> <span class="price__off">&minus;<span class="js-pct">15%</span></span></p>
             <button class="btn btn--ghost js-pick" data-product="GoldenPass Line">Reserve seat</button>
           </div>
         </div>
@@ -330,7 +347,7 @@
           <p class="peak__alt">3,454 m</p>
           <h3>Jungfraujoch</h3>
           <p class="peak__d">Top of Europe · Ice Palace</p>
-          <div class="peak__foot"><span class="price"><small>from</small> <s class="price__was">$150</s> <b>$112</b></span>
+          <div class="peak__foot"><span class="price" data-base="150"><small>from</small> <s class="price__was">$150</s> <b class="price__now">$127</b></span>
             <button class="btn btn--tiny js-pick" data-product="Jungfraujoch Ticket">Book</button></div>
         </div>
       </article>
@@ -341,7 +358,7 @@
           <p class="peak__alt">3,089 m</p>
           <h3>Gornergrat</h3>
           <p class="peak__d">29 peaks over 4,000 m</p>
-          <div class="peak__foot"><span class="price"><small>from</small> <s class="price__was">$83</s> <b>$62</b></span>
+          <div class="peak__foot"><span class="price" data-base="83"><small>from</small> <s class="price__was">$83</s> <b class="price__now">$70</b></span>
             <button class="btn btn--tiny js-pick" data-product="Gornergrat Ticket">Book</button></div>
         </div>
       </article>
@@ -352,7 +369,7 @@
           <p class="peak__alt">2,970 m</p>
           <h3>Schilthorn</h3>
           <p class="peak__d">Piz Gloria · Skyline Walk</p>
-          <div class="peak__foot"><span class="price"><small>from</small> <s class="price__was">$58</s> <b>$43</b></span>
+          <div class="peak__foot"><span class="price" data-base="58"><small>from</small> <s class="price__was">$58</s> <b class="price__now">$49</b></span>
             <button class="btn btn--tiny js-pick" data-product="Schilthorn Ticket">Book</button></div>
         </div>
       </article>
@@ -363,7 +380,7 @@
           <p class="peak__alt">2,132 m</p>
           <h3>Mount Pilatus</h3>
           <p class="peak__d">World's steepest cogwheel railway</p>
-          <div class="peak__foot"><span class="price"><small>from</small> <s class="price__was">$53</s> <b>$39</b></span>
+          <div class="peak__foot"><span class="price" data-base="53"><small>from</small> <s class="price__was">$53</s> <b class="price__now">$45</b></span>
             <button class="btn btn--tiny js-pick" data-product="Pilatus Ticket">Book</button></div>
         </div>
       </article>
@@ -374,7 +391,7 @@
           <p class="peak__alt">1,798 m</p>
           <h3>Rigi</h3>
           <p class="peak__d">Queen of the Mountains</p>
-          <div class="peak__foot"><span class="price"><small>from</small> <s class="price__was">$49</s> <b>$36</b></span>
+          <div class="peak__foot"><span class="price" data-base="49"><small>from</small> <s class="price__was">$49</s> <b class="price__now">$41</b></span>
             <button class="btn btn--tiny js-pick" data-product="Rigi Ticket">Book</button></div>
         </div>
       </article>
@@ -385,7 +402,7 @@
           <p class="peak__alt">1,322 m</p>
           <h3>Harder Kulm</h3>
           <p class="peak__d">Two lakes above Interlaken</p>
-          <div class="peak__foot"><span class="price"><small>from</small> <s class="price__was">$28</s> <b>$21</b></span>
+          <div class="peak__foot"><span class="price" data-base="28"><small>from</small> <s class="price__was">$28</s> <b class="price__now">$23</b></span>
             <button class="btn btn--tiny js-pick" data-product="Harder Kulm Ticket">Book</button></div>
         </div>
       </article>
@@ -399,7 +416,7 @@
     <div class="why__media reveal">
       <img src="assets/img/sbb-intercity.jpg" alt="A Swiss InterCity tilting train running along the shore of Lake Biel" loading="lazy" />
       <div class="why__float">
-        <p class="why__float-n">25% off</p>
+        <p class="why__float-n"><span class="js-pct">15%</span> off</p>
         <p class="why__float-l">on every pass and mountain ticket — and still a 0% booking fee</p>
       </div>
     </div>
@@ -408,7 +425,7 @@
       <header class="sec__head sec__head--left reveal">
         <p class="kicker">Why book with us</p>
         <h2>Swiss precision, minus the paperwork</h2>
-        <p class="sec__sub">Every pass and mountain ticket comes with a flat 25% off —
+        <p class="sec__sub">Every pass and mountain ticket comes with a flat <span class="js-pct">15%</span> off —
           an offer no other authorised ticket partner makes.</p>
       </header>
 
@@ -416,9 +433,9 @@
         <li class="reveal feat--hl">
           <span class="feat__ico"><svg viewBox="0 0 24 24"><path d="M12 2 4 6v6c0 5 3.4 8.9 8 10 4.6-1.1 8-5 8-10V6Z"/><path d="m9 12 2 2 4-4"/></svg></span>
           <div>
-            <h3>The only authorised partner giving 25% off <span class="feat__tag">25% OFF</span></h3>
+            <h3>The only authorised partner giving <span class="js-pct">15%</span> off <span class="feat__tag"><span class="js-pct">15%</span> OFF</span></h3>
             <p>Genuine tickets and passes, issued on the official Swiss system — and we are
-              the only authorised ticket partner giving a flat 25% off every one of them.</p>
+              the only authorised ticket partner giving a flat <span class="js-pct">15%</span> off every one of them.</p>
           </div>
         </li>
         <li class="reveal" style="--d:.06s">
@@ -522,10 +539,23 @@
         <h3 class="bform__h">Request your trip plan</h3>
 
         <p class="promo promo--bform">
-          <span class="promo__badge">25% OFF</span>
-          <span><b>25% off every ticket &amp; pass.</b> Every price you see is already
-            reduced by 25%, and the same discount is applied to the quote we send you.</span>
+          <span class="promo__badge"><span class="js-pct">15%</span> OFF</span>
+          <span><b><span class="js-pct">15%</span> off every ticket &amp; pass.</b> Every price you see is already
+            reduced by <span class="js-pct">15%</span>, and the same discount is applied to the quote we send you.</span>
         </p>
+
+        <!-- coupon -->
+        <div class="coupon" id="couponBox">
+          <label for="coupon">Have a coupon code?</label>
+          <div class="coupon__row">
+            <input type="text" id="coupon" name="coupon"
+                   placeholder="Enter coupon to get 25% off"
+                   autocomplete="off" autocapitalize="characters" spellcheck="false"
+                   aria-describedby="couponMsg" />
+            <button class="btn btn--ghost coupon__btn" type="button" id="couponBtn">Apply</button>
+          </div>
+          <p class="coupon__msg" id="couponMsg" role="status" aria-live="polite"></p>
+        </div>
 
         <div class="row">
           <div class="fld">

@@ -46,7 +46,9 @@ var FIELDS = [
   'consent',
   'pageUrl',
   'referrer',
-  'userAgent'
+  'userAgent',
+  'coupon',
+  'discount'
 ];
 
 /** Human-readable header row, same order as FIELDS. */
@@ -65,7 +67,9 @@ var HEADERS = [
   'Consent',
   'Page URL',
   'Referrer',
-  'User agent'
+  'User agent',
+  'Coupon',
+  'Discount'
 ];
 
 /* ------------------------------------------------------------- */
@@ -146,6 +150,8 @@ function testSubmission() {
       children: '1',
       travelClass: 'First',
       message: 'This is a test row - delete it.',
+      coupon: '',
+      discount: '15%',
       consent: 'Yes',
       pageUrl: 'https://example.com/',
       referrer: 'direct',
